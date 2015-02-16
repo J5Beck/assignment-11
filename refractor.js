@@ -52,7 +52,7 @@ setTimeout(sayHi, 2000);
 // Put your answer below -------------------------
 setTimeout((function(){
  alert("Hello, World");
-}), 5000);
+}), 2000);
 
 // -----------------------------------------------
 
@@ -82,7 +82,9 @@ letter = "z";
 console.log("The letter is", letter);
 
 // Put your answer below -------------------------
-
+// answer is [c]
+// the function first changes var letter to y but due to the 1 millasecond delay
+// it skips down and logs Z first then back up and logs y
 
 // -----------------------------------------------
 
