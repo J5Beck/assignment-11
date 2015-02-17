@@ -14,7 +14,7 @@ var  buildTree = function(data) {
   $rootUl = $("<ul />");
 
   _.each(data, function(item){
-    var $innerUL, $innerLi, innerData;
+    var $innerUL, $innerLi, innerData; $twoInnerUL, $twoInnerLi, twoInnerData; 
 
     $rootLi = $("<li />");
     $rootLi.append("<span>" + item.name + "</span>");
@@ -28,6 +28,26 @@ var  buildTree = function(data) {
           $innerLi = $("<li />");
           $innerLi.append("<span>" + innerItem.name + "</span>")
           $innerUl.append($innerLi);
+
+            if (item.children) {
+
+              twoInnerData = item.children;
+              $twoInnerUL = $("<ul />");
+
+                _.each(twoInnerData, function(innerItem) {
+                  $twoInnerLi = $("<li />");
+                  $twoInnerLi.append("<span>" + innerItem.name + "</span>")
+                  $twoInnerUL.append($twoInnerLi);
+                  
+
+              });
+
+              $rootLi.append($twoInnerUL);
+
+              }
+
+            $rootUl.append($rootLi);
+        });    
 
       });
 
