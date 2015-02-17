@@ -21,43 +21,14 @@ var  buildTree = function(data) {
 
     if (item.children) {
 
-      innerData = item.children;
-      $innerUl = $("<ul />");
-
-        _.each(innerData, function(innerItem) {
-          $innerLi = $("<li />");
-          $innerLi.append("<span>" + innerItem.name + "</span>")
-          $innerUl.append($innerLi);
-
-            if (item.children) {
-
-              twoInnerData = item.children;
-              $twoInnerUL = $("<ul />");
-
-                _.each(twoInnerData, function(innerItem) {
-                  $twoInnerLi = $("<li />");
-                  $twoInnerLi.append("<span>" + innerItem.name + "</span>")
-                  $twoInnerUL.append($twoInnerLi);
-                  
-
-              });
-
-              $rootLi.append($twoInnerUL);
-
-              }
-
-            $rootUl.append($rootLi);
-        });    
-
-      });
-
-      $rootLi.append($innerUl);
-
-      }
+      $subTree = buildTree(item.children);
+      $rootLi.append($subTree);
+      
+    }  
 
     $rootUl.append($rootLi);
 
   });
 
   return $rootUl
-}
+};
